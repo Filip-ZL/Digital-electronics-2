@@ -29,8 +29,14 @@
 int main(void)
 {
     /* Configuration of three LEDs */
+	GPIO_config_output(&DDRB, LED_D1);
+	GPIO_write_low(&PORTB, LED_D1);
+	
     GPIO_config_output(&DDRB, LED_D2);
     GPIO_write_low(&PORTB, LED_D2);
+	
+	GPIO_config_output(&DDRB, LED_D3);
+	GPIO_write_low(&PORTB, LED_D3);
     // WRITE YOUR CODE HERE
 
     /* Configuration of 8-bit Timer/Counter0 */
