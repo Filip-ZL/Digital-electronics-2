@@ -52,7 +52,7 @@ void SEG_init(void);
  *        transmitted.
  */
 void SEG_update_shift_regs(uint8_t segments, uint8_t position);
-
+void SEG_update_snake_position(uint8_t segment, uint8_t position);
 /* SEG_clear */
 
 /* SEG_clk_2us */

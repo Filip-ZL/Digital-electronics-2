@@ -15,18 +15,26 @@
 #include "gpio.h"
 #include "segment.h"
 
+uint8_t snake_position[] = {
+	0b01111111,
+	0b10111111,
+	0b11011111,
+	0b11101111,
+	0b11110111,
+	0b11111011
+};
 uint8_t segment_value[] = {
 	// abcdefgDP
-	0b00000011,
-	0b10011111,
-	0b00100101,
-	0b00001101,
-	0b10011001,
-	0b01001001,
-	0b01000001,
-	0b00011111,
-	0b00000001,
-	0b00011001
+	0b00000011,		// 0
+	0b10011111,		// 1
+	0b00100101,		// 2
+	0b00001101,		// 3
+	0b10011001,		// 4
+	0b01001001,		// 5
+	0b01000001,		// 6
+	0b00011111,		// 7
+	0b00000001,		// 8
+	0b00001001		// 9
 	};
 
 // Active-high position 0 to 3
@@ -34,8 +42,9 @@ uint8_t segment_position[] = {
 	// p3p2p1p0....
 	0b00010000,   // Position 0
 	0b00100000,   // Position 1
-	0b01000000,
-	0b10000000};
+	0b01000000,	  // Position 2
+	0b10000000	  // Position 3
+	};
 /* Function definitions ----------------------------------------------*/
 void SEG_init(void)
 {
@@ -52,9 +61,9 @@ void SEG_update_shift_regs(uint8_t segments, uint8_t position)
 	segments = segment_value[segments];     // 0, 1, ..., 9
 	position = segment_position[position];  // 0, 1, 2, 3
     // Pull LATCH, CLK, and DATA low
-	GPIO_write_low(&DDRD, SEGMENT_LATCH);
-	GPIO_write_low(&DDRD, SEGMENT_CLK);
-	GPIO_write_low(&DDRD, SEGMENT_DATA);
+	GPIO_write_low(&PORTD, SEGMENT_LATCH);
+	GPIO_write_low(&PORTD, SEGMENT_CLK);
+	GPIO_write_low(&PORTD, SEGMENT_DATA);
 	
     // Wait 1 us
 	_delay_us(1);
@@ -112,13 +121,83 @@ void SEG_update_shift_regs(uint8_t segments, uint8_t position)
     }
 
     // Pull LATCH high
-
+	GPIO_write_high(&PORTD, SEGMENT_LATCH);
     // Wait 1 us
+	_delay_us(1);
+}
 
+void SEG_update_snake_position(uint8_t segment, uint8_t position)
+{
+	    uint8_t bit_number;
+	    segment = snake_position[segment];     // 0, 1, ..., 9
+	    position = segment_position[position];  // 0, 1, 2, 3
+	    // Pull LATCH, CLK, and DATA low
+	    GPIO_write_low(&PORTD, SEGMENT_LATCH);
+	    GPIO_write_low(&PORTD, SEGMENT_CLK);
+	    GPIO_write_low(&PORTD, SEGMENT_DATA);
+	    
+	    // Wait 1 us
+	    _delay_us(1);
+	    // Loop through the 1st byte (segments)
+	    // a b c d e f g DP (active low values)
+	    for (bit_number = 0; bit_number < 8; bit_number++)
+	    {
+		    // Output DATA value (bit 0 of "segments")
+		    // segments % 2 == 0
+		    if ((segment & 1) == 0)
+		    {
+			    GPIO_write_low(&PORTB, SEGMENT_DATA);
+		    }
+		    else
+		    {
+			    GPIO_write_high(&PORTB, SEGMENT_DATA);
+		    }
+		    // Wait 1 us
+		    _delay_us(1);
+		    // Pull CLK high
+		    GPIO_write_high(&PORTD, SEGMENT_CLK);
+		    
+		    // Wait 1 us
+		    _delay_us(1);
+		    // Pull CLK low
+		    GPIO_write_low(&PORTD, SEGMENT_CLK);
+		    // Shift "segments"
+		    segment = segment >> 1;
+	    }
+
+	    // Loop through the 2nd byte (position)
+	    // p3 p2 p1 p0 . . . . (active high values)
+	    for (bit_number = 0; bit_number < 8; bit_number++)
+	    {
+		    // Output DATA value (bit 0 of "position")
+		    if ((position & 1) == 0)
+		    {
+			    GPIO_write_low(&PORTB, SEGMENT_DATA);
+		    }
+		    else
+		    {
+			    GPIO_write_high(&PORTB, SEGMENT_DATA);
+		    }
+		    // Wait 1 us
+		    _delay_us(1);
+		    // Pull CLK high
+		    GPIO_write_high(&PORTD, SEGMENT_CLK);
+		    // Wait 1 us
+		    _delay_us(1);
+		    // Pull CLK low
+		    GPIO_write_low(&PORTD, SEGMENT_CLK);
+		    
+		    // Shift "position"
+		    position = position >> 1;
+	    }
+
+	    // Pull LATCH high
+	    GPIO_write_high(&PORTD, SEGMENT_LATCH);
+	    // Wait 1 us
+	    _delay_us(1);
 }
 
 /*--------------------------------------------------------------------*/
 /* SEG_clear */
-
 /*--------------------------------------------------------------------*/
 /* SEG_clk_2us */
