@@ -51,7 +51,7 @@ void SEG_init(void);
  * @note  Two shift registers are connected in series, ie 16 bits are 
  *        transmitted.
  */
-void SEG_update_shift_regs(uint8_t segments, uint8_t position);
+void SEG_update_shift_regs(uint8_t segments, uint8_t position, uint8_t DP);
 void SEG_update_snake_position(uint8_t segment, uint8_t position);
 /* SEG_clear */
 

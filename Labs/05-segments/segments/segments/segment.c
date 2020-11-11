@@ -55,12 +55,16 @@ void SEG_init(void)
 }
 
 /*--------------------------------------------------------------------*/
-void SEG_update_shift_regs(uint8_t segments, uint8_t position)
+void SEG_update_shift_regs(uint8_t segments, uint8_t position, uint8_t DP)
 {
     uint8_t bit_number;
 	segments = segment_value[segments];     // 0, 1, ..., 9
 	position = segment_position[position];  // 0, 1, 2, 3
     // Pull LATCH, CLK, and DATA low
+	if(DP)
+	{
+		segments &= ~(1 << 0);
+	}
 	GPIO_write_low(&PORTD, SEGMENT_LATCH);
 	GPIO_write_low(&PORTD, SEGMENT_CLK);
 	GPIO_write_low(&PORTD, SEGMENT_DATA);
