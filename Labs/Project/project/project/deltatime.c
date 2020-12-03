@@ -19,25 +19,23 @@ uint16_t us_deltatime = 0;
 
 void deltatime_init(void)
 {
-	GPIO_config_output(&DDRB, trigger);
+	PCINT16_change_level_enable();
 }
 
-uint16_t count_deltatime()
+uint16_t count_deltatime(volatile uint8_t *reg_name, uint8_t pin_num)
 {
 	// sends 10 us pulse to trigger
-	GPIO_write_high(&PORTB, trigger);
+	GPIO_write_high(&*reg_name, pin_num);
 	_delay_us(10);
-	GPIO_write_low(&PORTB, trigger);
-	TIM0_overflow_16u();
-	
+	GPIO_write_low(&*reg_name, pin_num);
 	// Interruption start when state is changed
-	EICRA |= (1 << ISC00);
-	PCICR |= (1 << PCIE2);
-	PCMSK2 |= (1 << PCINT16);
+	PCINT16_interrupt_enable();
 	sei();
 	
 	
 	return us_deltatime;
+	PCINT16_interrupt_disable();
+		
 }
 
 ISR(PCINT2_vect)
@@ -46,6 +44,8 @@ ISR(PCINT2_vect)
 	if(PIND & (1 << echo))
 	{
 		//stopwatch start
+		currentTime = 0;
+		TIM0_overflow_16u();
 		TIM0_overflow_interrupt_enable();
 	}
 	// condition for "falling edge"
@@ -54,7 +54,6 @@ ISR(PCINT2_vect)
 		// stopwatch disabled and currentTime is set to 0
 		TIM0_overflow_interrupt_disable();
 		us_deltatime = currentTime*16;
-		currentTime = 0;
 	}
 }
 
@@ -66,6 +65,5 @@ ISR(TIMER0_OVF_vect)
 	if(currentTime > 1563)
 	{
 		currentTime = 1563;
-		
 	}	
 }
