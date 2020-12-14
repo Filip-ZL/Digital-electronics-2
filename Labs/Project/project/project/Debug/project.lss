@@ -1164,14 +1164,14 @@ ISR(TIMER1_OVF_vect)
 		counter = 0;
  708:	10 92 31 01 	sts	0x0131, r1	; 0x800131 <counter.2242>
 		// sensor accurency is guaranted from 4cm to 4m - this condition is up limitation
-		if(back_distance > 425)
+		if(back_distance > 400)
  70c:	c0 90 32 01 	lds	r12, 0x0132	; 0x800132 <back_distance>
  710:	d0 90 33 01 	lds	r13, 0x0133	; 0x800133 <back_distance+0x1>
  714:	e0 90 34 01 	lds	r14, 0x0134	; 0x800134 <back_distance+0x2>
  718:	f0 90 35 01 	lds	r15, 0x0135	; 0x800135 <back_distance+0x3>
  71c:	20 e0       	ldi	r18, 0x00	; 0
- 71e:	30 e8       	ldi	r19, 0x80	; 128
- 720:	44 ed       	ldi	r20, 0xD4	; 212
+ 71e:	30 e0       	ldi	r19, 0x00	; 0
+ 720:	48 ec       	ldi	r20, 0xC8	; 200
  722:	53 e4       	ldi	r21, 0x43	; 67
  724:	c7 01       	movw	r24, r14
  726:	b6 01       	movw	r22, r12

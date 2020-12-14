@@ -98,7 +98,7 @@ ISR(TIMER1_OVF_vect)
 
 		counter = 0;
 		// sensor accurency is guaranted from 4cm to 4m - this condition is up limitation
-		if(back_distance > 425)
+		if(back_distance > 400)
 		{
 			lcd_gotoxy(10,0);
 			lcd_puts("      ");
