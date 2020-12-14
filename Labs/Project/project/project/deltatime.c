@@ -34,6 +34,7 @@ uint16_t count_deltatime(volatile uint8_t *reg_name, uint8_t pin_num)
 	
 	
 	return us_deltatime;
+	// change state interrupt disabled
 	PCINT16_interrupt_disable();
 		
 }
@@ -51,7 +52,7 @@ ISR(PCINT2_vect)
 	// condition for "falling edge"
 	else
 	{
-		// stopwatch disabled and currentTime is set to 0
+		// stopwatch disabled and deltatime is counted
 		TIM0_overflow_interrupt_disable();
 		us_deltatime = currentTime*16;
 	}
