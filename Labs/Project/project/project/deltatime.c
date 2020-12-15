@@ -5,7 +5,7 @@
  *  Author: ffili
  //*/ 
  
-/*@warning CPU frequency */
+/* @warning CPU frequency */
 #define F_CPU		16000000	
 
  
