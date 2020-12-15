@@ -65,7 +65,9 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  Byl použit LED Bar s 8 segmenty.
  
  
- 
+  ### Simulace
+ 1. [Simulace](https://youtu.be/EFfpQ9luzMA) předního a zadního sensoru v programu SimulIDE (v. 0.4.13)
+ 2. [Simulace](https://youtu.be/Ew5TH7cMuqA) správné funkčnosti sensoru HC-SR04
  
  
  
