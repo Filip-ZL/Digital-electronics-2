@@ -1,9 +1,26 @@
-/*
- * bar_driver.h
+/**
+ * @mainpage
+ * Collection of libraries for AVR-GCC
+ * @author Filip Jasek & Vojtech Zboril
  *
- * Created: 02.12.2020 15:49:11
- *  Author: ffili
- */ 
+ * @file
+ * @defgroup bar_driver  <bar_driver.h>
+ * @code #include <bar_driver.h> @endcode
+ *
+ * @brief Function that turn on/of specific amout of leds on bar graf
+ *
+ * Bar driver simply turns on as much leds as the input value is closer to 0
+ * There is need for max value to be defined, so the function knows where to start turning on leds
+ *
+ *
+ *
+ *
+ * @author Filip Jasek & Vojtech Zboril
+ *
+ * @version   1.0
+ *
+ *
+ */
 
 
 #ifndef BAR_DRIVER_H_

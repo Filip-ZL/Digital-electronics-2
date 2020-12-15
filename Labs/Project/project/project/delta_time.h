@@ -1,9 +1,28 @@
-/*
- * delta_time.h
+/**
+ * @mainpage
+ * Collection of libraries for AVR-GCC
+ * @author Filip Jasek & Vojtech Zboril
  *
- * Created: 26.11.2020 23:17:00
- *  Author: ffili
- */ 
+ * @file
+ * @defgroup stopwatch_delta Stopwatch library <delta_time.h>
+ * @code #include <delta_time.h> @endcode
+ *
+ * @brief Function for measuring time start and stop by change state on selected pin
+ *
+ * Stopwatch is basicaly used to measure time between 2 points, in our case it's measuring time when the echo pin is high.
+ * When the echo pin is high the echo burst is traveling in space and it gets low when the echo comes back.
+ *
+ * This library is offering simple delta time measurement with a deviation of 32 us.
+ * The reason of the deviation is because it's the lowest prescaler Atmega 328 provides
+ *
+ *
+ *
+ * @author Filip Jasek & Vojtech Zboril
+ *
+ * @version   1.0
+ *
+ *
+ */
 
 
 #ifndef DELTA_TIME_H_
