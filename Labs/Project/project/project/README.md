@@ -20,7 +20,7 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  Výsledná práce sestává z jednotlivých bloků (modulů), které byly vytvořeny, následně propojeny a odsimulovány ke správné funkčnosti zadaného projektu.
  
  
- ![Blokove schéma zapojení parkovacího asistenta](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/block_scheme.png)
+ ![Blokove schéma zapojení parkovacího asistenta](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/block_diagram_edited.png)
   *Obr.1 Kompletní blokové schéma aplikace*
   
   
@@ -65,7 +65,7 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  Byl použit LED Bar s 8 segmenty.
  
  
-  ### Simulace
+ ### Simulace
  1. [Simulace](https://youtu.be/EFfpQ9luzMA) předního a zadního sensoru v programu SimulIDE (v. 0.4.13)
  2. [Simulace](https://youtu.be/Ew5TH7cMuqA) správné funkčnosti sensoru HC-SR04
  
