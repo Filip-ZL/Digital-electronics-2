@@ -147,6 +147,7 @@ void BAR_update_shift_regs(uint16_t maxVal, uint16_t currentVal, uint8_t positio
   de:	e0 50       	subi	r30, 0x00	; 0
   e0:	ff 4f       	sbci	r31, 0xFF	; 255
   e2:	d0 81       	ld	r29, Z
+	// indication of how much leds are on is counted from current distance and divided by max distance set by user
 	percentVal = round((currentVal/(float)maxVal)*100);
   e4:	80 e0       	ldi	r24, 0x00	; 0
   e6:	90 e0       	ldi	r25, 0x00	; 0
@@ -169,6 +170,8 @@ void BAR_update_shift_regs(uint16_t maxVal, uint16_t currentVal, uint8_t positio
  10e:	0e 94 e6 05 	call	0xbcc	; 0xbcc <__mulsf3>
  112:	0e 94 53 06 	call	0xca6	; 0xca6 <round>
  116:	0e 94 00 05 	call	0xa00	; 0xa00 <__fixunssfsi>
+	
+	// condition decides how much is car close compare to max distance
 	if(percentVal > 100)
  11a:	65 36       	cpi	r22, 0x65	; 101
  11c:	18 f0       	brcs	.+6      	; 0x124 <BAR_update_shift_regs+0x5e>
@@ -479,8 +482,8 @@ uint16_t count_deltatime(volatile uint8_t *reg_name, uint8_t pin_num)
 	sei();
  2a4:	78 94       	sei
 	
-	
 	return us_deltatime;
+	// change state interrupt disabled
 	PCINT16_interrupt_disable();
 		
 }
@@ -531,7 +534,7 @@ ISR(PCINT2_vect)
 	// condition for "falling edge"
 	else
 	{
-		// stopwatch disabled and currentTime is set to 0
+		// stopwatch disabled and deltatime is counted
 		TIM0_overflow_interrupt_disable();
  2ec:	ee e6       	ldi	r30, 0x6E	; 110
  2ee:	f0 e0       	ldi	r31, 0x00	; 0

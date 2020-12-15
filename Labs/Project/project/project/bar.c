@@ -4,6 +4,7 @@
  * Created: 02.12.2020 15:36:38
  *  Author: ffili
  */
+
 #define F_CPU 16000000
 
 #include <util/delay.h>
@@ -43,7 +44,10 @@ void BAR_update_shift_regs(uint16_t maxVal, uint16_t currentVal, uint8_t positio
 	uint8_t bit_number;
 	uint8_t percentVal;
 	position = BAR_position[position];
+	// indication of how much leds are on is counted from current distance and divided by max distance set by user
 	percentVal = round((currentVal/(float)maxVal)*100);
+	
+	// condition decides how much is car close compare to max distance
 	if(percentVal > 100)
 	{
 		bar_value = led_state[0];
