@@ -70,13 +70,11 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  
  
  
- #### Projekt byl vytvořen v programovacím prostředí *[Atmel Studio 7.0](https://atmel-studio.software.informer.com/7.0/)* za použití [*MIT License*](https://tldrlegal.com/license/mit-license).
- 
- 
- 
- 
- 
- 
  ### Reference
  [1]
  How HC-SR04 Ultrasonic Sensor Works & Interface It With Arduino. Last Minute Engineers [online]. Neuvedeno: Neuvedeno, Neuvedeno [cit. 2020-12-14]. Dostupné z: https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
+ 
+
+
+#### Projekt byl vytvořen v programovacím prostředí *[Atmel Studio 7.0](https://atmel-studio.software.informer.com/7.0/)* a simulačním prostředí *[SimulIDE0.4.13](https://www.simulide.com/2020/09/simulide0413-released.html)*
+za použití [*MIT License*](https://tldrlegal.com/license/mit-license).
