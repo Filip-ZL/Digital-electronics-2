@@ -20,7 +20,7 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  Výsledná práce sestává z jednotlivých bloků (modulů), které byly vytvořeny, následně propojeny a odsimulovány ke správné funkčnosti zadaného projektu.
  
  
- ![Blokove schéma zapojení parkovacího asistenta](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/block_scheme.png)
+ ![Blokove schéma zapojení parkovacího asistenta](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/block_diagram_edited.png)
   *Obr.1 Kompletní blokové schéma aplikace*
   
   
