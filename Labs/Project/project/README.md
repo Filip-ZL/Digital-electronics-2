@@ -70,7 +70,7 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  
  
  
- 
+ #### Projekt byl vytvořen v programovacím prostředí *[Atmel Studio 7.0](https://atmel-studio.software.informer.com/7.0/)* za použití [*MIT License*](https://tldrlegal.com/license/mit-license).
  
  
  
