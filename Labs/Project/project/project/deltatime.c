@@ -4,7 +4,9 @@
  * Created: 25.11.2020 15:35:25
  *  Author: ffili
  //*/ 
-#define F_CPU		16000000	//@warning CPU frequency 
+ 
+/*@warning CPU frequency */
+#define F_CPU		16000000	
 
  
 #include "gpio.h"
