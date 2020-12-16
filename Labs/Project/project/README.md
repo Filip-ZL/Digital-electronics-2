@@ -21,7 +21,8 @@ Níže je tento projekt rozdělen do jednotlivých částí s odkazy na dílčí
  
  
  ![Blokove schéma zapojení parkovacího asistenta](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/block_diagram_edited.png)
-  \*Obr.1 Kompletní blokové schéma aplikace*
+  
+  *Obr.1 Kompletní blokové schéma aplikace*
   
   
  ![Kompletní schéma zapojení aplikace - SimulIDE](https://github.com/Filip-ZL/Digital-electronics-2/blob/master/Labs/Project/project/images/scheme.png)
