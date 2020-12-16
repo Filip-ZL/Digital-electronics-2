@@ -37,8 +37,8 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../bar.c \
-../deltatime.c \
+../bar_driver.c \
+../delta_time.c \
 ../gpio.c \
 ../lcd.c \
 ../main.c
@@ -51,29 +51,29 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-bar.o \
-deltatime.o \
+bar_driver.o \
+delta_time.o \
 gpio.o \
 lcd.o \
 main.o
 
 OBJS_AS_ARGS +=  \
-bar.o \
-deltatime.o \
+bar_driver.o \
+delta_time.o \
 gpio.o \
 lcd.o \
 main.o
 
 C_DEPS +=  \
-bar.d \
-deltatime.d \
+bar_driver.d \
+delta_time.d \
 gpio.d \
 lcd.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
-bar.d \
-deltatime.d \
+bar_driver.d \
+delta_time.d \
 gpio.d \
 lcd.d \
 main.d
@@ -92,14 +92,14 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./bar.o: .././bar.c
+./bar_driver.o: .././bar_driver.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./deltatime.o: .././deltatime.c
+./delta_time.o: .././delta_time.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

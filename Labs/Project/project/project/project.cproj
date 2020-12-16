@@ -120,13 +120,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="bar.c">
+    <Compile Include="bar_driver.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="bar_driver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="deltatime.c">
+    <Compile Include="delta_time.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="delta_time.h">
